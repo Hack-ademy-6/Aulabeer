@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-12 col-md-6 col-lg-3">
                 <div class="member">
-                    <div class="pic"><img src="{{Storage::url($cerveceria->img)}}" class="img-fluid" alt=""></div>
+                    <div class="pic"><img src="{{Storage::url($cerveceria->img)}}" height="300" width="300" alt=""></div>
                     <div class="member-info">
                         <h4>{{$cerveceria->name}}</h4>
                         <p>{{$cerveceria->description}}</p>

@@ -47,41 +47,36 @@
         <form action="{{ route ('breweries.store') }}" method="post" role="form" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-6 form-group">
+                <div class="col-12 col-md-6 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
                         value="{{ old('name') }}">
                     @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-6 form-group">
-                    <input type="file" name="img" class="form-control" id="img"
-                        value="{{ old('img') }}">
+                <div class="col-12 col-md-6 form-group">
+                    <input type="file" name="img" class="form-control" id="img" value="{{ old('img') }}">
                     @error('img')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input type="text" class="form-control" name="description" id="description"
-                        placeholder="Description" value="{{ old('description') }}">
+                <div class="col-12 col-md-6 form-group mt-3">
+                    <textarea name="description" id="description" placeholder="Description" cols="10" rows="2"
+                        class="form-control">{{ old('description')}}</textarea>
                     @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="col-12 col-md-6 form-group mt-3">
+                    <input type="number" class="form-control" name="capacity" id="capacity" placeholder="Capacity"
+                        value="{{ old('capacity') }}">
+                    @error('capacity')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-12 text-center mt-2"><button type="submit"
+                        class="btn btn-lg btn-warning">Envía</button></div>
             </div>
-            <div class="form-group mt-3">
-                <input type="number" class="form-control" name="capacity" id="capacity" placeholder="Capacity"
-                    value="{{ old('capacity') }}">
-                @error('capacity')
-                <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Añade cerveceria</div>
-            </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
         </form>
         {{-- @if ($errors->any())
             <div class="alert alert-danger">

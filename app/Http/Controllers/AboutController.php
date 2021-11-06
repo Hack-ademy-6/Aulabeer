@@ -19,25 +19,25 @@ class AboutController extends Controller
                 "name"=>"Nico",
                 "lastname"=>"Milella",
                 "age"=>32,
-                "img"=>"/img/chefs/chefs-1.jpg"
+                "img"=>"/img/nicom.jpg"
             ],
             [
                 "name"=>"Nahuel",
                 "lastname"=>"Barbieri",
                 "age"=>25,
-                "img"=>"/img/chefs/chefs-3.jpg"
+                "img"=>"/img/nahu.jpg"
             ],
             [
                 "name"=>"Nico",
                 "lastname"=>"Gasparro",
                 "age"=>29,
-                "img"=>"/img/chefs/chefs-3.jpg"
+                "img"=>"/img/nicog.jpg"
             ],
             [
                 "name"=>"Gracia",
                 "lastname"=>"Ruiz",
                 "age"=>34,
-                "img"=>"/img/chefs/chefs-2.jpg"
+                "img"=>"/img/gracia.jpg"
             ],
 
         ];

@@ -2,25 +2,25 @@
 @section('content')
   <!-- ======= Hero Section ======= -->
   <section id="hero">
-    <div class="hero-container my-5 py-5">
+    <div class="hero-container">
       <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide 1 -->
-          <div class="carousel-item active" style="background: url(/img/brewery.jpg); background-position:center;">
+          <div class="carousel-item active" style="background: url(/img/brewery1.jpg); background-position:center;">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown"><span>Breweries</span> Aulabeer</h2>
                 <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
                 <div>
-                  <a href="#menu" class="btn-menu animate__animated animate__fadeInUp scrollto">Our Menu</a>
-                  <a href="#book-a-table" class="btn-book animate__animated animate__fadeInUp scrollto">Book a Table</a>
+                  <a href="{{ route('breweries.index') }}" class="btn-menu animate__animated animate__fadeInUp scrollto">Nuestras cervecerias</a>
+                  <a href="{{ route('contact') }}" class="btn-book animate__animated animate__fadeInUp scrollto">Contacto</a>
                 </div>
               </div>
             </div>
           </div>
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background: url(/img/slide/slide-2.jpg);">
+          <div class="carousel-item" style="background: url(/img/brewery2.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
@@ -34,8 +34,7 @@
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background: url(/img/slide/slide-3.jpg);">
-            <div class="carousel-background"><img src="/img/slide/slide-3.jpg" alt=""></div>
+          <div class="carousel-item" style="background: url(/img/brewery5.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>

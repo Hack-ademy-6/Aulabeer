@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\BreweryController;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,10 @@ use App\Http\Controllers\BreweryController;
  Route::get('/about', AboutController::class)->name('about'); 
 
 //contacto
- Route::get('/contacto',  [PublicController::class, 'getContacto'])->name('contacto');
- Route::post('/contacto',  [HomeController::class, 'storeContact'])->name('contacto.store'); 
- Route::get('/contacts',  [HomeController::class, 'contacts'])->name('contacts');
+ Route::get('/contacts',  [ContactController::class, 'index'])->name('contacts');
+ Route::post('/contact',  [ContactController::class, 'storeContact'])->name('contacto.store'); 
+ Route::view('/contact','contact')->name("contact");
+
 
  #Route::view('/', 'welcome');
 
