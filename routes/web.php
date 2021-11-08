@@ -51,6 +51,36 @@ Route::delete('/breweries/{id}',  [BreweryController::class, 'destroy'])->name('
 
 
 
+// registro
+    // boton/link 'register'
+    // ruta get
+    // controller -> metodo registerForm()
+    // vista del formulario 'register'
+    // request POST a una ruta post '/register'
+    // controller -> metodo register()
+        // validar los datos
+        // guardarlos en la db
+        // loguear el usuario (manejar la session)
+        // salir con redirect
+
+// login
+    // boton/link login
+    // ruta get
+    // controller -> metodo loginForm()
+    // vista del formulario 'login'
+    // request POST a una ruta post '/login'
+    // controller -> metodo login()
+        // validar los datos
+        // creo query que busca por correo
+            // si no encuentra nada, redirect con error
+            // si lo encuentra
+                // comprobamos la contraseña
+                    // si no coincide, redirect con error
+                    // si coincide
+                        // logear el usuario (manejar la session)
+    // salir con un redirect                    
+
+
 
 
 

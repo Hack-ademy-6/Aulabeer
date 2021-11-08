@@ -19,5 +19,14 @@
     @include('layout._footer')
     @stack('js')
     <script src="{{ mix('js/app.js') }}"></script>
+    <script>
+     let logout = document.getElementById('logout')
+     if(logout){
+       logout.addEventListener('click', ()=>{
+         let form = document.getElementById('logout-form')
+         form.submit();
+       })
+     }
+    </script>
   </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brewery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class BreweryController extends Controller
@@ -21,6 +22,7 @@ class BreweryController extends Controller
            // Store datas
     public function store(Request $request)
     {
+
         $validatedData = $request->validate([
             'name'=>'required',
             'description'=>'required',
@@ -38,10 +40,13 @@ class BreweryController extends Controller
     
         $path = $validatedData['img']->store('public/breweries');
         $validatedData['img'] = $path;
+
+        if(!$user = Auth::user()){
+            return redirect()->route("login")->withMessage('No estás autentificado');
+        }
         // mass assignement
         $cerveceria = Brewery::create($validatedData);
-        
-        return redirect()->route("breweries.index")->withMessage('Cerveceria creada con éxito');
+        return redirect()->route("breweries.index");
     }
 
 

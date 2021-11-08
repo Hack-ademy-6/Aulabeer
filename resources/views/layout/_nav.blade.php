@@ -22,26 +22,21 @@
                  <li><a class="nav-link scrollto" href="{{ route('about') }}">Sobre nosotros</a></li>
                  <li><a class="nav-link scrollto" href="{{ route('breweries.index') }}">Cervecerias</a></li>
                  <li><a class="nav-link scrollto" href="{{ route('breweries.create') }}">Añade tu cerveceria</a></li>
-                 <li><a class="nav-link scrollto" href="#events">Events</a></li>
-                 <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-                 <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+                 @guest
+                 <li><a class="nav-link scrollto" href="/login">Login</a></li>
+                 <li><a class="nav-link scrollto" href="/register">Register</a></li>
+                 @endguest
+                 @auth
+                 <li class="dropdown"><a href="#"><span>{{ auth()->user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
                      <ul>
-                         <li><a href="#">Drop Down 1</a></li>
-                         <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i
-                                     class="bi bi-chevron-right"></i></a>
-                             <ul>
-                                 <li><a href="#">Deep Drop Down 1</a></li>
-                                 <li><a href="#">Deep Drop Down 2</a></li>
-                                 <li><a href="#">Deep Drop Down 3</a></li>
-                                 <li><a href="#">Deep Drop Down 4</a></li>
-                                 <li><a href="#">Deep Drop Down 5</a></li>
-                             </ul>
-                         </li>
-                         <li><a href="#">Drop Down 2</a></li>
-                         <li><a href="#">Drop Down 3</a></li>
-                         <li><a href="#">Drop Down 4</a></li>
-                     </ul>
-                 </li>
+                               <li>
+                                   <a href="#" class="nav-link scrollto" id="logout">Logout</a>
+                                  <form id="logout-form" action="/logout" method="POST">
+                                  @csrf 
+                                  </form>
+                               </li>
+                        @endauth
+                            </ul>
                  <li><a class="nav-link scrollto" href="{{ route('contact') }}">Contact</a></li>
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
