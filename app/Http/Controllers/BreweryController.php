@@ -15,6 +15,9 @@ class BreweryController extends Controller
         return view('breweries.index', compact('cervecerias'));
     }
     public function create(){
+        if(!$user = Auth::user()){
+            return redirect()->route("login")->withMessage('No estás autentificado');
+        }
         return view('breweries.create');
     }
 
@@ -45,21 +48,34 @@ class BreweryController extends Controller
             return redirect()->route("login")->withMessage('No estás autentificado');
         }
         // mass assignement
-        $cerveceria = Brewery::create($validatedData);
+        #$cerveceria = Brewery::create($validatedData);
+
+        $user->breweries()->create($validatedData);
         return redirect()->route("breweries.index");
     }
 
 
     public function show($id)
     {
+    if(!$user = Auth::user()){
+            return redirect()->route("login")->withMessage('No estás autentificado');
+    }
       $cerveceria = Brewery::findOrFail($id);
       return view('breweries.show', compact('cerveceria'));
     }
 
    //crUd
     public function edit($id)
-    {
+    {   
+        //si no estoy logueado
+        if(!$user = Auth::user()){
+            return redirect()->route("login")->withMessage('No estás autentificado');
+        }
       $cerveceria = Brewery::findOrFail($id);
+
+      if($user->id != $cerveceria->user_id){
+        return back()->withMessage('No eres el dueño de esta cerveceria '. $cerveceria->name);
+    }
       return view('breweries.edit', compact('cerveceria'));
     }
 
@@ -89,8 +105,14 @@ class BreweryController extends Controller
 
    
     public function destroy($id)
-    {
+    {    if(!$user = Auth::user()){
+        return redirect()->route("login")->withMessage('No estás autentificado');
+}
         $cerveceria = Brewery::findOrFail($id);
+
+        if($user->id != $cerveceria->user_id){
+            return back()->withMessage('No eres el dueño de esta cerveceria '. $cerveceria->name);
+        }
         $cerveceria->delete();
         return redirect()->route('breweries.index');
     }

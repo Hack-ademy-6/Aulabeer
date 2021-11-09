@@ -14,9 +14,11 @@
                 <div class="member">
                     <div class="pic"><img src="{{Storage::url($cerveceria->img)}}" height="300" width="300" alt=""></div>
                     <div class="member-info">
+                        <h2>{{ $cerveceria->user->name }}</h2>
                         <h4>{{$cerveceria->name}}</h4>
                         <p>{{$cerveceria->description}}</p>
                         <p>{{$cerveceria->capacity}}</p>
+                        <p>{{$cerveceria->created_at}}</p>
                         <a href="{{ route('breweries.edit', ['id'=>$cerveceria->id]) }}" class="btn btn-danger">Modificar cerveceria</a>
                         <form action="{{ route('breweries.destroy', ['id'=>$cerveceria->id] ) }}" method="POST">
                         @method('DELETE')

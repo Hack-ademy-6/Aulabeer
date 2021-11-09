@@ -21,23 +21,26 @@
                  <li><a class="nav-link scrollto active" href="{{ route('welcome') }}">Home</a></li>
                  <li><a class="nav-link scrollto" href="{{ route('about') }}">Sobre nosotros</a></li>
                  <li><a class="nav-link scrollto" href="{{ route('breweries.index') }}">Cervecerias</a></li>
-                 <li><a class="nav-link scrollto" href="{{ route('breweries.create') }}">Añade tu cerveceria</a></li>
-                 @guest
-                 <li><a class="nav-link scrollto" href="/login">Login</a></li>
-                 <li><a class="nav-link scrollto" href="/register">Register</a></li>
-                 @endguest
-                 @auth
-                 <li class="dropdown"><a href="#"><span>{{ auth()->user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
-                     <ul>
-                               <li>
-                                   <a href="#" class="nav-link scrollto" id="logout">Logout</a>
-                                  <form id="logout-form" action="/logout" method="POST">
-                                  @csrf 
-                                  </form>
-                               </li>
-                        @endauth
-                            </ul>
                  <li><a class="nav-link scrollto" href="{{ route('contact') }}">Contact</a></li>
+                 @auth
+                 <li class="dropdown"><a href="#"><span>{{ auth()->user()->name }}</span>
+                         <i class="bi bi-chevron-down"></i></a>
+                     <ul>
+                         <li>
+                             <a href="#" class="nav-link scrollto" id="logout">Logout</a>
+                             <form id="logout-form" action="/logout" method="POST">
+                                 @csrf
+                             </form>
+                         </li>
+                         <li><a class="nav-link scrollto" href="{{ route('breweries.create') }}">Añade tu cerveceria</a>
+                         </li>
+                         @endauth
+                         @guest
+                         <li><a class="nav-link scrollto" href="/login">Login</a></li>
+                         <li><a class="nav-link scrollto" href="/register">Register</a></li>
+                         @endguest
+                     </ul>
+
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav><!-- .navbar -->
