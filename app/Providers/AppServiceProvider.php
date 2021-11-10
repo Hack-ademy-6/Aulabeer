@@ -22,7 +22,11 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        //
+    {  /*  if(Schema::hastable('beers'))
+        {
+        $beers = Beer::all();
+        View::share('beers', $beers);
+        } */
+        
     }
 }

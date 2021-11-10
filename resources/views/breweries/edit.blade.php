@@ -75,6 +75,14 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                @foreach ($beers as $beer)
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" value="{{ $beer->id }}" id="flexCheckDefault" name="beers[]" @if($cerveceria->beers->contains($beer)) checked @endif>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        {{ $beer->name }}
+                    </label>
+                  </div>
+                @endforeach
                 <div class="col-12 text-center mt-2"><button type="submit" class="btn btn-lg btn-warning">Envía</button></div>
             </div>
         </form>

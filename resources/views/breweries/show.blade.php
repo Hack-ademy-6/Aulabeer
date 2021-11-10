@@ -19,6 +19,9 @@
                         <p>{{$cerveceria->description}}</p>
                         <p>{{$cerveceria->capacity}}</p>
                         <p>{{$cerveceria->created_at}}</p>
+                        @foreach ($beers as $beer)
+                        <p> @if($cerveceria->beers->contains($beer)) {{ $beer->name }} @endif<p>
+                        @endforeach
                         <a href="{{ route('breweries.edit', ['id'=>$cerveceria->id]) }}" class="btn btn-danger">Modificar cerveceria</a>
                         <form action="{{ route('breweries.destroy', ['id'=>$cerveceria->id] ) }}" method="POST">
                         @method('DELETE')

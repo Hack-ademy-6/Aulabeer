@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beer;
 use App\Models\Brewery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 
 class BreweryController extends Controller
-{
+{   
+    public function __construct(){
+      View::share('beers', Beer::all());
+    }
+
+
     public function index(){
 
        $cervecerias = Brewery::all();
@@ -25,7 +32,6 @@ class BreweryController extends Controller
            // Store datas
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'name'=>'required',
             'description'=>'required',
@@ -50,7 +56,12 @@ class BreweryController extends Controller
         // mass assignement
         #$cerveceria = Brewery::create($validatedData);
 
-        $user->breweries()->create($validatedData);
+        $cerveceria = $user->breweries()->create($validatedData);
+
+        //asociar las cervezas seleccionadas a la cerveceria que acabamos de crear
+        //attach 
+
+        $cerveceria->beers()->attach($request->beers);
         return redirect()->route("breweries.index");
     }
 
@@ -99,6 +110,8 @@ class BreweryController extends Controller
          }
 
         $cerveceria->update($validatedData);
+
+        $cerveceria->beers()->sync($request->beers);
 
         return redirect()->route('breweries.show', ['id'=>$id])->withMessage("Artículo actualizado");
     }

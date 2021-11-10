@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Brewery;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Beer extends Model
 {
@@ -14,4 +15,9 @@ class Beer extends Model
         'type',
         'price',
     ];
+
+    public function breweries()
+    {
+        return $this->belongsToMany(Brewery::class);
+    }
 }
